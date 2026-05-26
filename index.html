@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Padronização | Repository Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Header / Nav -->
+    <nav class="bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-blue-600 p-2 rounded-lg text-white">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight">DevStandard <span class="text-blue-600">Repo</span></span>
+            </div>
+            <div class="hidden md:flex gap-6 text-sm font-medium text-slate-600">
+                <a href="#objetivo" class="hover:text-blue-600 transition">Objetivo</a>
+                <a href="#pilares" class="hover:text-blue-600 transition">Pilares</a>
+                <a href="#instrucoes" class="hover:text-blue-600 transition">Instruções</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-6 py-16 md:py-24 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4">
+                Padrão de Desenvolvimento
+            </span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">
+                Construindo com consistência <br> e contexto.
+            </h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Este repositório não é apenas código. É o nosso guia vivo para garantir que cada linha escrita siga um propósito, um padrão e entregue clareza para quem chega agora e para quem mantém o futuro.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        
+        <!-- Section: O Objetivo -->
+        <section id="objetivo" class="mb-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 italic">"Código é lido muito mais vezes do que é escrito."</h2>
+                    <p class="text-slate-600 mb-4 leading-relaxed">
+                        O objetivo central deste repositório é servir como a <strong>"Fonte Única da Verdade"</strong> para o desenvolvimento do projeto. Ao centralizar padrões, evitamos debates repetitivos sobre estilo e focamos no que realmente importa: resolver problemas de negócio.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                            <span><strong>Contexto Imediato:</strong> Reduz o tempo de onboarding de novos desenvolvedores.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                            <span><strong>Manutenibilidade:</strong> Código previsível é código fácil de manter.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-slate-900 rounded-xl p-6 shadow-2xl text-blue-400 font-mono text-sm leading-relaxed">
+                    <p class="text-slate-500">// O padrão que seguimos</p>
+                    <p class="mt-2"><span class="text-purple-400">if</span> (code.isConsistent) {</p>
+                    <p class="ml-4 text-green-400">happiness.increase();</p>
+                    <p class="ml-4 text-green-400">velocity.maintain();</p>
+                    <p class="text-white">} <span class="text-purple-400">else</span> {</p>
+                    <p class="ml-4 text-red-400">refactor(immediately);</p>
+                    <p>}</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Pilares -->
+        <section id="pilares" class="mb-20">
+            <h2 class="text-2xl font-bold mb-10 text-center uppercase tracking-widest text-slate-500">Nossos Pilares</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-layer-group text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Arquitetura</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Estrutura de pastas padronizada. Cada arquivo tem seu lugar, facilitando a navegação e a separação de responsabilidades.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-spell-check text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Convenções</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Nomes de variáveis, padrões de commit e linter. Escrevemos código como se fôssemos uma única pessoa.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-book-open text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Documentação</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Não basta fazer, é preciso explicar o "porquê". Decisões técnicas são registradas para consulta futura.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Instruções para o Programador -->
+        <section id="instrucoes" class="bg-blue-600 rounded-3xl p-8 md:p-12 text-white">
+            <div class="max-w-3xl">
+                <h2 class="text-3xl font-bold mb-6">Instruções para o Programador</h2>
+                <p class="mb-8 text-blue-100 italic">
+                    "Antes de abrir seu primeiro Pull Request, familiarize-se com o ecossistema."
+                </p>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center font-bold">1</span>
+                        <div>
+                            <h4 class="font-bold text-lg leading-tight">Leia o README.md</h4>
+                            <p class="text-blue-100 text-sm mt-1">Lá você encontrará os comandos de setup, variáveis de ambiente e pré-requisitos.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center font-bold">2</span>
+                        <div>
+                            <h4 class="font-bold text-lg leading-tight">Siga o Design Pattern definido</h4>
+                            <p class="text-blue-100 text-sm mt-1">Verifique a pasta <code class="bg-blue-700 px-1 rounded">/docs</code> para entender a arquitetura (Clean Arch, MVC, etc).</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center font-bold">3</span>
+                        <div>
+                            <h4 class="font-bold text-lg leading-tight">Consistência acima de Preferência</h4>
+                            <p class="text-blue-100 text-sm mt-1">Mesmo que você prefira outra biblioteca ou estilo, mantenha o padrão já estabelecido no projeto para evitar dívida técnica.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-10">
+                    <a href="#" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition">
+                        Explorar Documentação Completa
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-12 px-6 mt-12">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-slate-500 text-sm italic">
+                Mantido pelo Time de Engenharia &bull; 2023
+            </p>
+            <div class="flex gap-6">
+                <a href="#" class="text-slate-400 hover:text-slate-600 text-xl"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-slate-400 hover:text-slate-600 text-xl"><i class="fab fa-slack"></i></a>
+                <a href="#" class="text-slate-400 hover:text-slate-600 text-xl"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
