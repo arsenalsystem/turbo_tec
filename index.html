@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turbo TEC</title>
+    <title>Turbo TEC - Acelere seu Desenvolvimento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -11,86 +12,566 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #00d4ff;
+            --secondary: #0a0e27;
+            --accent: #ff006e;
+            --dark: #0d1117;
+            --gray: #30363d;
+            --text: #c9d1d9;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
             min-height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            padding: 40px;
+            justify-content: center;
+            padding: 2rem 5%;
             text-align: center;
-            max-width: 600px;
+            position: relative;
+            overflow: hidden;
         }
 
-        h1 {
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 2.5em;
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            left: -200px;
+            animation: float 20s infinite;
         }
 
-        p {
-            color: #555;
-            margin-bottom: 30px;
-            font-size: 1.1em;
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 0, 110, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -200px;
+            right: -200px;
+            animation: float 25s infinite reverse;
         }
 
-        .button-group {
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #8b949e;
+        }
+
+        .hero .cta-buttons {
             display: flex;
-            gap: 10px;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        button {
-            padding: 12px 24px;
-            font-size: 1em;
+        .btn {
+            padding: 0.8rem 2rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-primary {
-            background: #667eea;
-            color: white;
+            background: linear-gradient(135deg, var(--primary), #00a8cc);
+            color: var(--dark);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
         }
 
         .btn-primary:hover {
-            background: #5568d3;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
         }
 
         .btn-secondary {
-            background: #f0f0f0;
-            color: #333;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
         }
 
         .btn-secondary:hover {
-            background: #e0e0e0;
-            transform: translateY(-2px);
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 6rem 5%;
+            background: rgba(10, 14, 39, 0.5);
+            border-top: 1px solid var(--gray);
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(30, 45, 85, 0.5), rgba(15, 25, 50, 0.5));
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .skill-card p {
+            color: #8b949e;
+            font-size: 0.95rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 5%;
+            background: rgba(13, 17, 23, 0.8);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-box {
+            background: rgba(30, 45, 85, 0.3);
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .feature-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-box p {
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(13, 17, 23, 0.95);
+            border-top: 1px solid var(--gray);
+            padding: 2rem 5%;
+            text-align: center;
+            color: #8b949e;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Animation */
+        .scroll-animation {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🚀 Turbo TEC</h1>
-        <p>Bem-vindo ao projeto Turbo TEC!</p>
-        <p>Projeto dedicado a acelerar o desenvolvimento com as melhores práticas e ferramentas.</p>
-        
-        <div class="button-group">
-            <button class="btn-primary" onclick="alert('Documentação em breve!')">📚 Documentação</button>
-            <button class="btn-secondary" onclick="alert('Exemplos em breve!')">💡 Exemplos</button>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <i class="fas fa-rocket"></i> Turbo TEC
         </div>
-    </div>
+        <ul class="nav-links">
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="https://github.com/arsenalsystem/turbo_tec" target="_blank">GitHub</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Turbo TEC</h1>
+            <p>Acelere seu desenvolvimento com tecnologia de ponta e boas práticas modernas</p>
+            <div class="cta-buttons">
+                <a href="#skills" class="btn btn-primary">
+                    <i class="fas fa-code"></i> Explorar Skills
+                </a>
+                <a href="https://github.com/arsenalsystem/turbo_tec" target="_blank" class="btn btn-secondary">
+                    <i class="fas fa-github"></i> Ver no GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2 class="section-title">🚀 Skills & Tecnologias</h2>
+        <div class="skills-grid">
+            <!-- Frontend -->
+            <div class="skill-card scroll-animation">
+                <div class="skill-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Frontend Development</h3>
+                <p>Criamos interfaces modernas, responsivas e acessíveis usando as melhores tecnologias web atuais.</p>
+                <div class="skill-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">React</span>
+                </div>
+            </div>
+
+            <!-- Backend -->
+            <div class="skill-card scroll-animation">
+                <div class="skill-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3>Backend Development</h3>
+                <p>Desenvolvemos APIs robustas, escaláveis e seguras com arquitetura moderna e padrões de código limpo.</p>
+                <div class="skill-tags">
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">REST API</span>
+                </div>
+            </div>
+
+            <!-- DevOps -->
+            <div class="skill-card scroll-animation">
+                <div class="skill-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <h3>DevOps & Cloud</h3>
+                <p>Automatizamos deployments, gerenciamos infraestrutura e garantimos alta disponibilidade.</p>
+                <div class="skill-tags">
+                    <span class="tag">Docker</span>
+                    <span class="tag">GitHub Actions</span>
+                    <span class="tag">AWS</span>
+                    <span class="tag">CI/CD</span>
+                </div>
+            </div>
+
+            <!-- Mobile -->
+            <div class="skill-card scroll-animation">
+                <div class="skill-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile Development</h3>
+                <p>Aplicações móveis nativas e híbridas que funcionam perfeitamente em qualquer dispositivo.</p>
+                <div class="skill-tags">
+                    <span class="tag">React Native</span>
+                    <span class="tag">Flutter</span>
+                    <span class="tag">iOS</span>
+                    <span class="tag">Android</span>
+                </div>
+            </div>
+
+            <!-- Database -->
+            <div class="skill-card scroll-animation">
+                <div class="skill-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>Data & Databases</h3>
+                <p>Gerenciamento eficiente de dados com SQL, NoSQL e otimização de performance.</p>
+                <div class="skill-tags">
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">Redis</span>
+                    <span class="tag">GraphQL</span>
+                </div>
+            </div>
+
+            <!-- Testing -->
+            <div class="skill-card scroll-animation">
+                <div class="skill-icon">
+                    <i class="fas fa-vial"></i>
+                </div>
+                <h3>Testing & QA</h3>
+                <p>Garantimos qualidade com testes automatizados, unitários, integração e end-to-end.</p>
+                <div class="skill-tags">
+                    <span class="tag">Jest</span>
+                    <span class="tag">Cypress</span>
+                    <span class="tag">Selenium</span>
+                    <span class="tag">TDD</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">✨ Por que Turbo TEC?</h2>
+        <div class="features-grid">
+            <div class="feature-box">
+                <div class="feature-number">⚡</div>
+                <h4>Máxima Velocidade</h4>
+                <p>Otimizamos cada aspecto para desenvolvimento rápido e eficiente.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-number">🎯</div>
+                <h4>Foco em Qualidade</h4>
+                <p>Código limpo, testado e pronto para produção.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-number">🔐</div>
+                <h4>Segurança</h4>
+                <p>Implementamos as melhores práticas de segurança e proteção de dados.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-number">📈</div>
+                <h4>Escalabilidade</h4>
+                <p>Arquitetura pensada para crescer com seu negócio.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-number">🤝</div>
+                <h4>Suporte & Documentação</h4>
+                <p>Documentação completa e suporte ativo da comunidade.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-number">🚀</div>
+                <h4>Inovação Contínua</h4>
+                <p>Sempre atualizado com as tecnologias mais recentes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <strong>Turbo TEC</strong> - Desenvolvido por <a href="https://github.com/arsenalsystem">arsenalsystem</a></p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <a href="https://github.com/arsenalsystem/turbo_tec">
+                <i class="fab fa-github"></i> GitHub Repository
+            </a>
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
